@@ -33,23 +33,20 @@ public class Main {
 			Scanner input = new Scanner(file);
 			String [] temp;
 			String line;
+			// keep track of the row
+			int i = 0;
+			// populate array with triange from input file
 			while(input.hasNextLine()){
 				line = input.nextLine();
 				temp = line.split(" ");
-				int i = 0;
 				for(int j = 0; j < temp.length;j++){
 					// need to fix this out of bounds exception
-					array[i][j] = temp[0].charAt(j);
+					array[i][j] = Integer.parseInt(temp[j]);
+					System.out.println("Value is " + array[i][j]);
 				}
 				i++;
 			}
 			
-			for(int i = 0; i < array.length;i++){
-				for(int j = 0; j < array[i].length;j++){
-					System.out.print(array[i][j] + " ");
-				}
-				System.out.println();
-			}
 			input.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
