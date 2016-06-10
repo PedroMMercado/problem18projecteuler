@@ -6,7 +6,7 @@ public class Main {
 	// Maximum path sum I Problem 18
 	public static void main(String[] args) {
 		int number = countLine("input.txt");
-		maxPath("input.txt", number);
+		System.out.println(maxPath("input.txt", number));
 	}
 	
 	public static int countLine(String fileName){
@@ -35,7 +35,7 @@ public class Main {
 			String line;
 			// keep track of the row
 			int i = 0;
-			// populate array with triange from input file
+			// populate array with triangle from input file
 			while(input.hasNextLine()){
 				line = input.nextLine();
 				temp = line.split(" ");
@@ -49,10 +49,15 @@ public class Main {
 			
 			input.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return 0;
+		
+		for(int i = lineCount - 2; i >= 0;i--){
+			for(int j = 0; j <= i;j++){
+				array[i][j] = array[i][j] + Math.max(array[i + 1][j],array[i + 1][j + 1]);
+			}
+		}
+		return array[0][0];
 	}
 	
 
